@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    background-color: white;
+    min-height: 100vh;
+    color: #3e3e3e;
+    font-size: 1.25rem;
+}
+
+
+textarea::-webkit-scrollbar{
+    display: none;
+}
+
+textarea{
+    min-height: 200px;
+}
+
+.mrq{
+    max-width: 700px;
+    margin: 0 auto;
+}
+/* 
+input,textarea{
+    outline: none;
+    color: aliceblue !important;
+    background: transparent !important;
+}
+
+input::placeholder{
+    color: aliceblue !important;
+}
+
+.inputBg{
+    background-color: rgb(61, 84, 84) !important;
+} */
