@@ -15,6 +15,18 @@ serviceRouter.get("/", async (req, res) => {
     res.status(500).json({ message: err.message })
   }
 })
+// Get single Services
+serviceRouter.get("/:id", authMiddleware,async (req, res) => {
+  try {
+    const {id} = req.params;
+    const service = await ServiceModel.find({_id:id})
+    res
+      .status(200)
+      .json({ success: true,  service })
+  } catch (err) {
+    res.status(500).json({ message: err.message })
+  }
+})
 
 // Create a new service
 serviceRouter.post("/", authMiddleware, async (req, res) => {
@@ -57,7 +69,7 @@ serviceRouter.put("/:id", authMiddleware, async (req, res) => {
 serviceRouter.delete("/:id", authMiddleware, async (req, res) => {
   try {
     await ServiceModel.findByIdAndDelete(req.params.id)
-    res.status(200).json({ message: "Service deleted" })
+    res.status(200).json({ success:true,message: "Service deleted" })
   } catch (err) {
     res.status(500).json({ message: err.message })
   }

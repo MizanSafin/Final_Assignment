@@ -15,6 +15,18 @@ teamRouter.get("/", async (req, res) => {
     res.status(500).json({ message: err.message })
   }
 })
+// Get single teamMember
+teamRouter.get("/:id",authMiddleware,async (req, res) => {
+  try {
+    const {id} = req.params;
+    const teamMember = await TeamModel.find({_id:id})
+    res
+      .status(200)
+      .json({ success: true, teamMember })
+  } catch (err) {
+    res.status(500).json({ message: err.message })
+  }
+})
 
 // Create a new teams
 teamRouter.post("/", authMiddleware, async (req, res) => {
@@ -59,7 +71,7 @@ teamRouter.put("/:id", authMiddleware, async (req, res) => {
 teamRouter.delete("/:id", authMiddleware, async (req, res) => {
   try {
     await TeamModel.findByIdAndDelete(req.params.id)
-    res.status(200).json({ message: "teamMember deleted" })
+    res.status(200).json({success:true, message: "teamMember deleted" })
   } catch (err) {
     res.status(500).json({ message: err.message })
   }

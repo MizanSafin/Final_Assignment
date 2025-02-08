@@ -10,7 +10,7 @@ const Dashboard = () => {
  
   const navigate = useNavigate();
 
-  const { handleBlogDelete, blogs, services, teams } = useAuth()
+  const { handleBlogDelete,handleServiceDelete,handleTeamDelete, blogs, services, teams } = useAuth()
 
 
 
@@ -57,10 +57,14 @@ const Dashboard = () => {
               <p className="mt-2 text-[16px]">{service.description}</p>
               <div className=" flex gap-5 mt-3">
                 <button className="text-[18px] hover:text-[20px]">
-                  <CiEdit />
+                  <CiEdit
+                    onClick={() => navigate(`/serviceUpdate/${service._id}`)}
+                  />
                 </button>
                 <button className="text-[18px] hover:text-[20px]">
-                  <MdDeleteOutline />
+                  <MdDeleteOutline
+                    onClick={() => handleServiceDelete(service._id)}
+                  />
                 </button>
               </div>
             </div>
@@ -80,10 +84,10 @@ const Dashboard = () => {
               <p className="text-[16px]">{team.role}</p>
               <div className=" flex gap-5 mt-3">
                 <button className="text-[18px] hover:text-[20px]">
-                  <CiEdit />
+                  <CiEdit onClick={() => navigate(`/teamUpdate/${team._id}`)} />
                 </button>
                 <button className="text-[18px] hover:text-[20px]">
-                  <MdDeleteOutline />
+                  <MdDeleteOutline onClick={() => handleTeamDelete(team._id)} />
                 </button>
               </div>
             </div>

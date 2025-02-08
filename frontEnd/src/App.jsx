@@ -12,6 +12,8 @@ import UpdateBlog from './components/UpdateBlog'
 import CreateBlog from './components/CreateBlog'
 import CreateService from './components/CreateService'
 import CreateTeam from './components/CreateTeam'
+import UpdateService from './components/UpdateService'
+import UpdateTeam from './components/UpdateTeam'
 
 
 const App = () => {
@@ -30,6 +32,9 @@ const App = () => {
             }
           />
           <Route path="/blogUpdate/:id" element={<UpdateBlog />} />
+          <Route path="/serviceUpdate/:id" element={<UpdateService />} />
+          <Route path="/teamUpdate/:id" element={<UpdateTeam />} />
+
           <Route path="/" element={<HomePage />} />
           <Route path="/service" element={<ServicePage />} />
           <Route path="/about" element={<AboutPage />} />
